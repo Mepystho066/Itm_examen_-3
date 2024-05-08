@@ -12,14 +12,19 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tipo")
 public class Tipo {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_tipo")
-    @GenericGenerator(name = "Secuencia_tipo_festivo", strategy = "increment" )
-    private int id; 
 
-    @Column(name="tipo",length = 100, unique = true)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO,generator="Secuencia_de_tipo")
+    @GenericGenerator(name = "Secuencia_de_tipo",strategy = "increment")
+    @Column(name = "id")
+    private int id;
+
+    @Column(name="tipo")
     private String tipo;
+
+    public Tipo(){
+
+    }
 
     public Tipo(int id, String tipo) {
         this.id = id;
@@ -43,7 +48,6 @@ public class Tipo {
     }
 
     
-
 
 
 }

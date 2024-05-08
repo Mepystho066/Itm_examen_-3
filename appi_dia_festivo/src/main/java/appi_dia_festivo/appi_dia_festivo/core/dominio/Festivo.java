@@ -1,7 +1,6 @@
 package appi_dia_festivo.appi_dia_festivo.core.dominio;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.ManyToAny;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,36 +8,45 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "festivo")
 public class Festivo {
-
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_dias")
-    @GenericGenerator(name = "Secuencia_dias_festivos", strategy = "increment")
+    @GeneratedValue(strategy =GenerationType.AUTO, generator = "Secuencia_de_festivo")
+    @GenericGenerator(name = "Secuencia_de_festivo",strategy="increment")
+    @Column(name = "id")
     private int id;
 
-    @Column(name = "nombre", length = 100, unique = true)
+    @Column(name="Nombre")
     private String nombre;
-    @Column(name = "dia", length = 100, unique = false)
+    @Column(name="dia")
     private int dia;
-    @Column(name = "mes", length = 100, unique = false)
+    @Column(name="mes")
     private int mes;
-    @Column(name = "diapascua", length = 100, unique = false)
+    @Column(name="diaspascua")
     private int diapascua;
-    @ManyToAny
-    @JoinColumn(name = "idtipo",referencedColumnName = "id")
-    private int idtipo;
     
-    public Festivo(int id, String nombre, int dia, int mes, int diapascua, int idtipo) {
+    @OneToOne
+    @JoinColumn(name = "idtipo", referencedColumnName = "id")
+    @PrimaryKeyJoinColumn
+    private Tipo tipo;
+
+    public Festivo(){
+
+    }
+
+    public Festivo(int id, String nombre, int dia, int mes, int diapascua, Tipo tipo) {
         this.id = id;
         this.nombre = nombre;
         this.dia = dia;
         this.mes = mes;
         this.diapascua = diapascua;
-        this.idtipo = idtipo;
+        this.tipo = tipo;
     }
 
     public int getId() {
@@ -81,14 +89,14 @@ public class Festivo {
         this.diapascua = diapascua;
     }
 
-    public int getIdtipo() {
-        return idtipo;
+    public Tipo getTipo() {
+        return tipo;
     }
 
-    public void setIdtipo(int idtipo) {
-        this.idtipo = idtipo;
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
     }
     
 
-
+    
 }

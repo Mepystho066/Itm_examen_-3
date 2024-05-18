@@ -8,6 +8,7 @@ public interface ITipoServicio {
 
     public List<Tipo> listar();    
     public Tipo obtener(int id);
+    public List<Tipo> buscar(String tipo);
 } 
     
 

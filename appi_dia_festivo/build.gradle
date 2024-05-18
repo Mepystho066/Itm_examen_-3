@@ -14,7 +14,11 @@ java {
 repositories {
 	mavenCentral()
 }
-
+// Configuración de compilación
+compileJava {
+    // Incluir la opción '-parameters' para conservar los nombres de los parámetros en tiempo de ejecución
+    options.compilerArgs += ["-parameters"]
+}
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'

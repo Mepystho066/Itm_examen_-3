@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import appi_dia_festivo.appi_dia_festivo.core.dominio.Festivo;
 import appi_dia_festivo.appi_dia_festivo.core.dominio.Tipo;
 import appi_dia_festivo.appi_dia_festivo.core.interfaces.repositorios.ITipoRepositorio;
 import appi_dia_festivo.appi_dia_festivo.core.interfaces.servicios.ITipoServicio;
@@ -29,4 +30,9 @@ public class TipoServico  implements ITipoServicio{
         return tipo.isEmpty() ? null : tipo.get();
     }
 
+
+      @Override
+    public List<Tipo> buscar(String nombre) {
+        return repositorio.buscar(nombre);
+    }
 }

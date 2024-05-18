@@ -1,5 +1,6 @@
 package appi_dia_festivo.appi_dia_festivo.core.interfaces.servicios;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -10,6 +11,11 @@ public interface IFestivoServicio {
     
     public List<Festivo> listar();    
     public Festivo obtener(int id);
-  
-
+    public List<Festivo> buscar(String nombre);
+    public Festivo agregar(Festivo festivo);
+    public Festivo modificar(Festivo festivo);
+    public boolean eliminar(int id);
+    //public Date domingoRamos(int año);
+    //public Date agregarDias(Date fecha, int dia);
+    //public Date siguienteLunes(Date fecha, int dia);
 }

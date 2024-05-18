@@ -1,5 +1,6 @@
 package appi_dia_festivo.appi_dia_festivo.aplicacion;
 
+import java.util.Date;
 //import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import appi_dia_festivo.appi_dia_festivo.core.dominio.Festivo;
 import appi_dia_festivo.appi_dia_festivo.core.interfaces.repositorios.IFestivoRepositorio;
 import appi_dia_festivo.appi_dia_festivo.core.interfaces.servicios.IFestivoServicio;
-//import appi_dia_festivo.appi_dia_festivo.core.interfaces.servicios.ICalculosFechas;
+import appi_dia_festivo.appi_dia_festivo.core.interfaces.servicios.ICalculosFechas;
 @Service
 public class FestivoServicio implements IFestivoServicio{
     
@@ -56,10 +57,10 @@ public class FestivoServicio implements IFestivoServicio{
     }
     
 
-    //@Override
-    //public Date domingoRamos(int año) {
-    //   return ICalculosFechas.domingoRamos(año);
-    //}
+    @Override
+    public Date domingoRamos(int año) {
+       return ICalculosFechas.domingoRamos(año);
+    }
 
     //@Override
     //public Date agregarDias(Date fecha, int dia) {

@@ -62,17 +62,15 @@ public class FestivoServicio implements IFestivoServicio{
        return ICalculosFechas.domingoRamos(año);
     }
 
-    //@Override
-    //public Date agregarDias(Date fecha, int dia) {
-    //    // TODO Auto-generated method stub
-    //    throw new UnsupportedOperationException("Unimplemented method 'agregarDias'");
-    //}
-//
-    //@Override
-    //public Date siguienteLunes(Date fecha, int dia) {
-    //    // TODO Auto-generated method stub
-    //    throw new UnsupportedOperationException("Unimplemented method 'siguienteLunes'");
-    //}
+    @Override
+    public Date agregarDias(Date fecha, int dia) {
+        return ICalculosFechas.agregarDias(fecha, dia);
+    }
+
+    @Override
+    public Date siguienteLunes(Date fecha, int dia) {
+        return ICalculosFechas.siguienteLunes(fecha, dia);
+    }
     
     
     

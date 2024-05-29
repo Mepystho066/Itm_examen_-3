@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 public class ICalculosFechas {
     
-
+    /// Me toco por esto
      @SuppressWarnings("deprecation")
     public static Date domingoRamos(int año){
         
@@ -51,7 +51,9 @@ public class ICalculosFechas {
         return fecha;
     }
 
-
-
+    // Agregar la estructura del verificador  
+    public Date verificar(Date fecha){
+        return fecha; 
+    }
 
 }

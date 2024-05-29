@@ -29,7 +29,7 @@ public class FestivoControlador {
     public List<Festivo> listar() {
         return servicio.listar();
     }
-    
+    //// Se le toco agregar a @PathVariable el nombre del valor de la url 
     @RequestMapping(value = "/obtener/{id}", method = RequestMethod.GET)
     public Festivo obtener(@PathVariable("id") int id ){
         return servicio.obtener(id);
@@ -63,12 +63,12 @@ public class FestivoControlador {
         return ICalculosFechas.domingoRamos(año);
     }
 
-    @RequestMapping(value ="/domingoRamos/{fecha}/{dia}",method = RequestMethod.GET)
+    @RequestMapping(value ="/siguienteDia/{fecha}/{dia}",method = RequestMethod.GET)
     public Date agregarDias(@PathVariable("fecha") Date fecha ,@PathVariable("dia") int dia){
         return ICalculosFechas.agregarDias(fecha,dia);
     }
 
-    @RequestMapping(value ="/domingoRamos/{fecha}/{dia}",method = RequestMethod.GET)
+    @RequestMapping(value ="/siguienteLunes/{fecha}/{dia}",method = RequestMethod.GET)
     public Date siguienteLunes(@PathVariable("fecha") Date fecha ,@PathVariable("dia") int dia){
         return ICalculosFechas.siguienteLunes(fecha,dia);
     }

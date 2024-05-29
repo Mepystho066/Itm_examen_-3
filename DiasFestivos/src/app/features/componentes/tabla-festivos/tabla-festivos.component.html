@@ -1,0 +1,32 @@
+<mat-toolbar>
+    <div class= "titles">
+        <h2>Seleccion dias festivos</h2>
+    </div>
+</mat-toolbar>
+
+<mat-toolbar>
+    
+    <mat-form-field>
+        <mat-label>Validar fecha</mat-label>    
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <input matInput [matDatepicker] = "picker" [(ngModel)]="fechasPicker">
+        <mat-datepicker-toggle matIconSuffix [for]="picker">
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker/>
+    </mat-form-field>
+    
+    <button mat-raised-button color="primary" (click)="verificar()" >Verificar Festivo</button>
+    
+</mat-toolbar>
+
+<div class ="botones">
+    <button mat-raised-button color ="primary" (click) ="agregar()" >Agregar</button>
+    <button mat-raised-button color ="accent" (click) ="modificar()" >Modificar</button>
+    <button mat-raised-button color ="warn" (click) ="verificarEliminar()" >Eliminar</button>
+</div>
+
+<div>
+    <ngx-datatable class="dark" [rows]="festivos" [columns]="columnas" [limit] = "10" [headerHeight] = "50" [footerHeight]="50" [rowHeight]="'auto'" [columnMode]="modoColumnas.force"  >  
+        <!--[selectionType]="tipoFestivo" -->
+    </ngx-datatable>
+</div>

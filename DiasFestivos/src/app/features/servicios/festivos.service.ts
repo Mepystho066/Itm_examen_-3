@@ -12,9 +12,18 @@ export class FestivosService {
   constructor( private http:HttpClient) { 
     this.url = `${environment.urlBase}festivo/`;
   }
-  // aqui toca definir el tipo de objeto que voy obtener
+  // aqui toca definir el tipo de va a obtener 
    public listar(): Observable<Festivo[]>{
+     // Resive un objeto por medio de la url 
     return this.http.get<Festivo[]>(`${this.url}listar`);
+   
    }
+
+   public logica(): Observable<Festivo[]>{
+    // Resive un objeto por medio de la url 
+   return this.http.get<Festivo[]>(`${this.url}logica`);
+  
+  }
+
 
 }

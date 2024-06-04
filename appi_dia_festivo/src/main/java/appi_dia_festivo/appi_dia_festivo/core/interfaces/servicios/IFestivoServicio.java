@@ -15,7 +15,6 @@ public interface IFestivoServicio {
     public Festivo agregar(Festivo festivo);
     public Festivo modificar(Festivo festivo);
     public boolean eliminar(int id);
-    public Date domingoRamos(int año);
-    public Date agregarDias(Date fecha, int dia);
-    public Date siguienteLunes(Date fecha, int dia);
+    public List logica(int año);
+    public boolean verificar(Date fecha);
 }

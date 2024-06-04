@@ -1,6 +1,12 @@
 package appi_dia_festivo.appi_dia_festivo.core.interfaces.servicios;
 
 import java.util.Date;
+
+import org.hibernate.mapping.List;
+
+import appi_dia_festivo.appi_dia_festivo.core.dominio.Festivo;
+import appi_dia_festivo.appi_dia_festivo.core.dominio.Tipo;
+
 import java.util.Calendar;
 
 public class ICalculosFechas {
@@ -26,8 +32,6 @@ public class ICalculosFechas {
             return new Date(año -1900, mes-1, dia); 
     }
 
-
-
     public static Date agregarDias( Date fecha,int dia){
 
         Calendar calendario = Calendar.getInstance();
@@ -51,9 +55,28 @@ public class ICalculosFechas {
         return fecha;
     }
 
-    // Agregar la estructura del verificador  
-    public Date verificar(Date fecha){
-        return fecha; 
+    //Logica de la base de datos y las tablas  esta es la que se debe mostrar al listar 
+
+    public static String testLogica(int año){
+        Tipo tipo = new Tipo();
+        Festivo festivo = new Festivo();
+        
+        // 1 solo se modifica el año 
+        String tabla_tipo = tipo.getTipo();
+        
+        String test = "dia " +festivo.getDia()+ " tipo "+ festivo.getTipo() + "";
+
+        // listar  toda la cada las columnas, utilizar 
+        int [] datos =  {año};
+        // se debe hacer primero la logica que selecciona ta tabla tipo que que
+        
+
+
+        return test; 
+
+
+
     }
+
 
 }

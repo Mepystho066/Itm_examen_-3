@@ -1,8 +1,10 @@
 package appi_dia_festivo.appi_dia_festivo.aplicacion;
 
+import java.util.ArrayList;
 import java.util.Date;
-//import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -22,6 +24,7 @@ public class FestivoServicio implements IFestivoServicio{
     @Override
     public List<Festivo> listar() {
         return repositorio.findAll();
+        
     }
 
     @Override
@@ -55,23 +58,63 @@ public class FestivoServicio implements IFestivoServicio{
             return false;
         }
     }
-    
 
     @Override
-    public Date domingoRamos(int año) {
-       return ICalculosFechas.domingoRamos(año);
+    public List logica(int año) {
+        List <Festivo> festivos = repositorio.findAll();
+        List <Map<String, Object>> datos= new ArrayList<>();
+        Date domingoRamos = ICalculosFechas.domingoRamos(año);
+        Date domingoPascua = ICalculosFechas.agregarDias(domingoRamos, 7);
+        for (Festivo festivo :festivos){
+            Map<String, Object> ListaFestivos = new LinkedHashMap<>();
+            if(festivo.getTipo().getId() == 1)
+            {
+                Date fecha = new Date(año-1900,festivo.getMes()-1,festivo.getDia());
+                ListaFestivos.put("Festivo", festivo.getNombre());
+                ListaFestivos.put("Fecha", fecha);
+                datos.add(ListaFestivos);
+            }
+            else if(festivo.getTipo().getId() == 2)
+            {
+                // Se traslada al siguiente lunes
+               Date fecha = ICalculosFechas.siguienteLunes(domingoPascua,festivo.getDia());
+               ListaFestivos.put("Festivo", festivo.getNombre());
+               ListaFestivos.put("Fecha", fecha);
+               datos.add(ListaFestivos);
+            }
+            else if(festivo.getTipo().getId() == 3)
+            {
+                //Basadi domingo Pasuca
+                Date fecha = ICalculosFechas.agregarDias(domingoPascua,festivo.getDia());
+                ListaFestivos.put("Festivo", festivo.getNombre());
+                ListaFestivos.put("Fecha", fecha);
+                datos.add(ListaFestivos);
+            }
+            else if(festivo.getTipo().getId() == 4)
+            {
+                Date fecha = ICalculosFechas.siguienteLunes(domingoPascua,festivo.getDiapascua());
+                // Domingo Pascua Y ley puente Festivo
+                ListaFestivos.put("Festivo", festivo.getNombre());
+                ListaFestivos.put("Fecha", fecha);
+                datos.add(ListaFestivos);
+            
+            }
+        
+        }
+        
+        
+        return datos;
     }
 
     @Override
-    public Date agregarDias(Date fecha, int dia) {
-        return ICalculosFechas.agregarDias(fecha, dia);
+    public boolean verificar(Date fecha) {
+        for(Festivo festivolista: listar()){
+            return false;
+        }
+        return false;
+
     }
 
-    @Override
-    public Date siguienteLunes(Date fecha, int dia) {
-        return ICalculosFechas.siguienteLunes(fecha, dia);
-    }
-    
     
     
 }

@@ -6,6 +6,8 @@ import {Festivo} from '../../../core/entidades/Festivo'
 import { formatDate } from '@angular/common';
 import { FestivosService } from '../../servicios/festivos.service';
 import { Tipo } from '../../../core/entidades/Tipo';
+import { MatDialog } from '@angular/material/dialog';
+import { FestivoEditarComponent } from '../festivo-editar/festivo-editar.component';
 @Component({
   selector: 'app-tabla-festivos',
   standalone: true,
@@ -19,8 +21,8 @@ import { Tipo } from '../../../core/entidades/Tipo';
 })
 export class TablaFestivosComponent {
   /* problemas para que no se muestre la fecha 
-  public fechasPicker:   Date | undefined ; 
   public fechasPicker = new Date ; 
+  public fechasPicker:   Date | undefined ; 
   */
   public fechasPicker: string = "";
   public festivos: Festivo [] =[];
@@ -33,12 +35,12 @@ export class TablaFestivosComponent {
     {name:"Festivo", prop:"nombre"},
     {name:"Tipo", prop:"dia" }
   ]
-
-  constructor(private servicio: FestivosService){
+  // servicio para cuadros de dialogo : MatDialog ,  para poder cargar el cuadro de  dialog desde buscar
+  constructor(private servicio: FestivosService , private servicioDialogo: MatDialog ){
     this.listar()
   }
 
-  public listar(){
+  public listar(){ // al ser un observable se tiene que sucribir 
      this.servicio.listar().subscribe({
       next: response =>{
         this.festivos= response;
@@ -50,6 +52,18 @@ export class TablaFestivosComponent {
      });
   }
 
+public logica(){
+  this.servicio.logica().subscribe({
+  next: response =>{
+    this.festivos= response;
+  },
+  error: error =>{
+    window.alert(error.mensage)
+  }
+
+ });
+}
+
   public verificar(){
     const fechas = new Date(this.fechasPicker);
     const dia= fechas?.getDate() ;
@@ -57,14 +71,34 @@ export class TablaFestivosComponent {
     const año= fechas?.getFullYear() ;
     console.log(dia )
     console.log(`Dia : ${dia} Mes: ${mes}  Año: ${año}`);
+    window.alert(`Dia festivo ${this.fechasPicker}}`)
   }
-  public agregar(){
 
+
+  public agregar(){
+    // Aqui se muestar el cuadro de dialogo 
+    this.servicioDialogo.open(FestivoEditarComponent,{
+      //parametros
+      width: "400px",
+      height : "300px",
+      disableClose: true,
+      // para enviar datos con esa estructura 
+      data : {
+        encabezado : "Agregar festivo",
+        festivo :{
+          id:0,
+          nombre:"",
+          dia:0,
+          mes:0,
+        }
+      }
+    });
+  
   }
   public modificar(){
 
   }
-  public verificarEliminar(){
+  public obtener(){
     
   }
 

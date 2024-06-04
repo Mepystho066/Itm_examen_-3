@@ -1,6 +1,6 @@
 package appi_dia_festivo.appi_dia_festivo.controlador;
 
-import java.util.Calendar;
+
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import appi_dia_festivo.appi_dia_festivo.core.dominio.Festivo;
 import appi_dia_festivo.appi_dia_festivo.core.interfaces.servicios.IFestivoServicio;
-import appi_dia_festivo.appi_dia_festivo.core.interfaces.servicios.ICalculosFechas;
+
 
 @RestController
 @RequestMapping("api/festivo")
@@ -58,19 +58,15 @@ public class FestivoControlador {
 
     }
 
-    @RequestMapping(value ="/domingoRamos/{año}",method = RequestMethod.GET)
-    public Date domingoRamos(@PathVariable("año") int año){
-        return ICalculosFechas.domingoRamos(año);
+    @RequestMapping(value ="/logica/{año}",method = RequestMethod.GET)
+    public List logica(@PathVariable("año") int año ){
+        return servicio.logica(año);
     }
-
-    @RequestMapping(value ="/siguienteDia/{fecha}/{dia}",method = RequestMethod.GET)
-    public Date agregarDias(@PathVariable("fecha") Date fecha ,@PathVariable("dia") int dia){
-        return ICalculosFechas.agregarDias(fecha,dia);
+    
+    @RequestMapping(value ="/verificar/{fecha}",method = RequestMethod.GET)
+    public Boolean domingoRamos(@PathVariable("fecha") Date fecha){
+        return servicio.verificar(fecha);
     }
-
-    @RequestMapping(value ="/siguienteLunes/{fecha}/{dia}",method = RequestMethod.GET)
-    public Date siguienteLunes(@PathVariable("fecha") Date fecha ,@PathVariable("dia") int dia){
-        return ICalculosFechas.siguienteLunes(fecha,dia);
-    }
-
+    
+    
 }

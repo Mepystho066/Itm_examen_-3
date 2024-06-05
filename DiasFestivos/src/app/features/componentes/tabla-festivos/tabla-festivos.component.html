@@ -4,31 +4,44 @@
     </div>
 </mat-toolbar>
 
-<mat-toolbar>
+<mat-toolbar  class="bodyBuscadores" >
+    <div class="buscadorFechas">
+        <mat-form-field >
+            <mat-label>Validar fecha</mat-label>    
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <input matInput [matDatepicker] = "picker" [(ngModel)]="fechasPicker">
+            <mat-datepicker-toggle matIconSuffix [for]="picker">
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker/>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="verificar()" >Buscar </button>
+    </div>
     
-    <mat-form-field>
-        <mat-label>Validar fecha</mat-label>    
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <input matInput [matDatepicker] = "picker" [(ngModel)]="fechasPicker">
-        <mat-datepicker-toggle matIconSuffix [for]="picker">
-        </mat-datepicker-toggle>
-        <mat-datepicker #picker/>
-    </mat-form-field>
-    
-    <button mat-raised-button color="primary" (click)="verificar()" >Verificar Festivo</button>
-    
+    <div class="buscadorNombre">
+        <mat-form-field >
+            <mat-label></mat-label>
+            <input matInput [(ngModel)] = "nombreFestivo">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="buscarNombre()" >Buscar por nombre</button>
+    </div>
+
 </mat-toolbar>
 
 <div class ="botones">
+    <!-- Barra o algo que muestre el año -->
     <button mat-raised-button color ="primary" (click) ="logica()" >Listar Festivos</button> 
     
     <button mat-raised-button color ="primary" (click) ="agregar()" >Agregar</button>
     <button mat-raised-button color ="accent" (click) ="modificar()" >Modificar</button>
-    <button mat-raised-button color ="warn" (click) ="obtener()" >Obtener Festivo</button>
+    <button mat-raised-button color ="accent" (click) ="obtener()" >Obtener Festivo</button>
+    <button mat-raised-button color ="warn" (click) ="verificarEliminar()" >Eliminar</button>
 </div>
 
 <div>
-    <ngx-datatable class="dark" [rows]="festivos" [columns]="columnas" [limit] = "10" [headerHeight] = "50" [footerHeight]="50" [rowHeight]="'auto'" [columnMode]="modoColumnas.force"  >  
-        <!--[selectionType]="tipoFestivo" -->
+    <ngx-datatable class="dark" [rows]="festivos" [columns]="columnas" [limit] = "10" 
+    [headerHeight] = "50" [footerHeight]="50" [rowHeight]="'auto'" [columnMode]="modoColumnas.force" [selectionType]="seleccionarFestivo.single" (activate)="escoger($event)">  
+        
     </ngx-datatable>
 </div>

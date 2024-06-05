@@ -6,7 +6,8 @@ import { FormsModule } from '@angular/forms';
 
 export interface DatosEdicionFestivo{
   encabezado: string ;
-  Festivo: Festivo;
+  /// Pude generar error si este esta similar a la Tabla Festivo
+  festivo: Festivo;
 }
 
 @Component({
@@ -29,9 +30,6 @@ export class FestivoEditarComponent {
   }
 
 
-public aceptar(){
-
-}
 public cancelar(){
   this.dialogRef.close();
 }

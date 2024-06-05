@@ -1,1 +1,8 @@
-<p>decidir works!</p>
+<div mat-dialog-content> 
+    <h3>{{datos.encabezado}}</h3>
+
+
+<div mat-dialog-actions> 
+    <button mat-raised-button color ="primary" [mat-dialog-close]="datos" >Aceptar</button>
+    <button mat-stroked-button color ="accent" (click) ="cancelar()" >cancelar</button>
+</div>

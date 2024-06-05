@@ -19,10 +19,25 @@ export class FestivosService {
    
    }
 
-   public logica(): Observable<Festivo[]>{
+   public logica(año:number): Observable<Festivo[]>{
     // Resive un objeto por medio de la url 
-   return this.http.get<Festivo[]>(`${this.url}logica`);
+    return this.http.get<Festivo[]>(`${this.url}logica/${año}`);
   
+  }
+
+  public agregar(festivo:Festivo): Observable<Festivo>{
+      return this.http.post<Festivo>(`${this.url}agregar`,festivo);
+  }
+
+  public modificar(festivo:Festivo): Observable<Festivo>{
+    return this.http.put<Festivo>(`${this.url}modificar`,festivo);
+  }
+
+  public eliminar(id:number): Observable<Festivo>{
+    return this.http.delete<Festivo>(`${this.url}eliminar/${id}`);
+  }
+  public buscar(nombre:String): Observable<Festivo[]>{
+    return this.http.get<Festivo[]>(`${this.url}buscar/${nombre}`);
   }
 
 

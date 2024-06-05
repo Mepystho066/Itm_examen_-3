@@ -42,7 +42,7 @@ public class ICalculosFechas {
     }
 
     
-    public static Date siguienteLunes(Date fecha, int dia){
+    public static Date siguienteLunes(Date fecha){
 
         Calendar calendario = Calendar.getInstance();
         calendario.setTime(fecha);
@@ -57,7 +57,9 @@ public class ICalculosFechas {
 
     //Logica de la base de datos y las tablas  esta es la que se debe mostrar al listar 
 
-    public static String testLogica(int año){
+    public static String verificar(int año){
+        
+        /// No se va a necesitar dado que en el Fontend se puede hacer la consula con logica 
         Tipo tipo = new Tipo();
         Festivo festivo = new Festivo();
         
@@ -68,9 +70,9 @@ public class ICalculosFechas {
 
         // listar  toda la cada las columnas, utilizar 
         int [] datos =  {año};
-        // se debe hacer primero la logica que selecciona ta tabla tipo que que
-        
 
+        
+        // se debe hacer primero la logica que selecciona la tabla tipo que se requiere 
 
         return test; 
 

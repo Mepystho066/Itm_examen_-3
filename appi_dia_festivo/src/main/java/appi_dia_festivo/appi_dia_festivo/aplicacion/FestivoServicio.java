@@ -64,6 +64,7 @@ public class FestivoServicio implements IFestivoServicio{
         List <Festivo> festivos = repositorio.findAll();
         List <Map<String, Object>> datos= new ArrayList<>();
         Date domingoRamos = ICalculosFechas.domingoRamos(año);
+        //Festivo doming = this.obtener(3);
         Date domingoPascua = ICalculosFechas.agregarDias(domingoRamos, 7);
         for (Festivo festivo :festivos){
             Map<String, Object> ListaFestivos = new LinkedHashMap<>();
@@ -77,22 +78,23 @@ public class FestivoServicio implements IFestivoServicio{
             else if(festivo.getTipo().getId() == 2)
             {
                 // Se traslada al siguiente lunes
-               Date fecha = ICalculosFechas.siguienteLunes(domingoPascua,festivo.getDia());
-               ListaFestivos.put("Festivo", festivo.getNombre());
-               ListaFestivos.put("Fecha", fecha);
-               datos.add(ListaFestivos);
+                Date caculo = new Date(año-1900,festivo.getMes()-1,festivo.getDia());
+                Date fecha = ICalculosFechas.siguienteLunes(caculo);
+                ListaFestivos.put("Festivo", festivo.getNombre());
+                ListaFestivos.put("Fecha", fecha);
+                datos.add(ListaFestivos);
             }
             else if(festivo.getTipo().getId() == 3)
             {
-                //Basadi domingo Pasuca
-                Date fecha = ICalculosFechas.agregarDias(domingoPascua,festivo.getDia());
+                //Basado en domingo Pasuca
+                Date fecha = ICalculosFechas.agregarDias(domingoPascua,festivo.getDiapascua());
                 ListaFestivos.put("Festivo", festivo.getNombre());
                 ListaFestivos.put("Fecha", fecha);
                 datos.add(ListaFestivos);
             }
             else if(festivo.getTipo().getId() == 4)
-            {
-                Date fecha = ICalculosFechas.siguienteLunes(domingoPascua,festivo.getDiapascua());
+            {   Date calculo = ICalculosFechas.agregarDias(domingoPascua,festivo.getDiapascua());
+                Date fecha = ICalculosFechas.siguienteLunes(calculo);
                 // Domingo Pascua Y ley puente Festivo
                 ListaFestivos.put("Festivo", festivo.getNombre());
                 ListaFestivos.put("Fecha", fecha);

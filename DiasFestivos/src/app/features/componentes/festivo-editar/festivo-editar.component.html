@@ -2,13 +2,19 @@
     <h3>{{datos.encabezado}}</h3>
 
     <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)] ="datos.festivo.nombre">
+    </mat-form-field>
+
+
+    <mat-form-field>
         <mat-label>Dia</mat-label>
-        <input matInput [(ngModel)] ="datos.Festivo.dia">
+        <input matInput [(ngModel)] ="datos.festivo.dia">
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Mes</mat-label>
-        <input matInput [(ngModel)] ="datos.Festivo.mes">
+        <input matInput [(ngModel)] ="datos.festivo.mes">
     </mat-form-field>
 </div>
 

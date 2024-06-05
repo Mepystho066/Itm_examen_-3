@@ -28,6 +28,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     justify-content: center;
     align-items: center;
     width: 100%;
+    border-radius: 6px;
 }
 
 

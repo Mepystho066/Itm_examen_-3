@@ -3,33 +3,13 @@
 @import '../node_modules/@swimlane/ngx-datatable/themes/dark.css';
 @import '../node_modules/@swimlane/ngx-datatable/themes/bootstrap.css';
 :root{
-    /*color-scheme:dark;*/
-    background: #fff;
+    color-scheme:dark;
+    /*background: #fff;*/
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.main{
-    height: 75px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
 
-
-.titles{
-    background: rgb(24,2, 53);
-    color: #fff;
-    height: 75px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    border-radius: 6px;
-}
 
 
 .botones button{

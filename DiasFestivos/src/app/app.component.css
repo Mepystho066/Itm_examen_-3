@@ -1,0 +1,10 @@
+.mainTitle{    
+    height: 75px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius:6px ;
+    background: rgb(249, 252, 120);
+}

@@ -1,5 +1,5 @@
-<mat-toolbar>
-    <div class= "titles">
+<mat-toolbar class="titleComponent" >
+    <div>
         <h2>Seleccion dias festivos</h2>
     </div>
 </mat-toolbar>
@@ -15,12 +15,12 @@
             <mat-datepicker #picker/>
         </mat-form-field>
 
-        <button mat-raised-button color="primary" (click)="verificar()" >Buscar </button>
+        <button mat-raised-button color="primary" (click)="verificar()" >Verificar </button>
     </div>
     
     <div class="buscadorNombre">
         <mat-form-field >
-            <mat-label></mat-label>
+            <mat-label>Nombre del festivo</mat-label>
             <input matInput [(ngModel)] = "nombreFestivo">
         </mat-form-field>
 

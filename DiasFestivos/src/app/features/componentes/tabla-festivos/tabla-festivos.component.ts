@@ -77,7 +77,6 @@ public logica(){
   this.servicio.logica(años).subscribe({
   next: response =>{
     this.festivos= response;
-    console.log(this.festivos= response)
   },
   error: error =>{
     window.alert(error.mensage)
@@ -211,17 +210,19 @@ public logica(){
   }
   
   public verificar(){
-     const fechas = new Date(this.fechasPicker);
-  var años = fechas?.getFullYear(); 
+    const fechas = new Date(this.fechasPicker);
+    const años = fechas?.getFullYear(); 
+    const listaFestivos = this.logica();  
 
-  
 
+    
     const dia= fechas?.getDate() ;
     const mes= fechas?.getMonth() +1;
     const año= fechas?.getFullYear() ;
-    console.log(`Dia : ${dia} Mes: ${mes}  Año: ${año}`);
-    console.log(`Mostrando logica ${this.logica()}`)
-    window.alert(`Dia festivo ${this.fechasPicker}}`)
+    //console.log(listaFestivos)
+    //console.log(`Dia : ${dia} Mes: ${mes}  Año: ${año}`);
+    //console.log(`Mostrando logica ${this.logica()}`)
+    //window.alert(`Dia festivo ${this.fechasPicker}}`)
 
   }
 

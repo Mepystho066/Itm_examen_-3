@@ -71,8 +71,8 @@ public class FestivoServicio implements IFestivoServicio{
             if(festivo.getTipo().getId() == 1)
             {
                 Date fecha = new Date(año-1900,festivo.getMes()-1,festivo.getDia());
-                ListaFestivos.put("Festivo", festivo.getNombre());
-                ListaFestivos.put("Fecha", fecha);
+                ListaFestivos.put("nombre", festivo.getNombre());
+                ListaFestivos.put("fecha", fecha);
                 datos.add(ListaFestivos);
             }
             else if(festivo.getTipo().getId() == 2)
@@ -80,24 +80,24 @@ public class FestivoServicio implements IFestivoServicio{
                 // Se traslada al siguiente lunes
                 Date caculo = new Date(año-1900,festivo.getMes()-1,festivo.getDia());
                 Date fecha = ICalculosFechas.siguienteLunes(caculo);
-                ListaFestivos.put("Festivo", festivo.getNombre());
-                ListaFestivos.put("Fecha", fecha);
+                ListaFestivos.put("nombre", festivo.getNombre());
+                ListaFestivos.put("fecha", fecha);
                 datos.add(ListaFestivos);
             }
             else if(festivo.getTipo().getId() == 3)
             {
                 //Basado en domingo Pasuca
                 Date fecha = ICalculosFechas.agregarDias(domingoPascua,festivo.getDiapascua());
-                ListaFestivos.put("Festivo", festivo.getNombre());
-                ListaFestivos.put("Fecha", fecha);
+                ListaFestivos.put("nombre", festivo.getNombre());
+                ListaFestivos.put("fecha", fecha);
                 datos.add(ListaFestivos);
             }
             else if(festivo.getTipo().getId() == 4)
             {   Date calculo = ICalculosFechas.agregarDias(domingoPascua,festivo.getDiapascua());
                 Date fecha = ICalculosFechas.siguienteLunes(calculo);
                 // Domingo Pascua Y ley puente Festivo
-                ListaFestivos.put("Festivo", festivo.getNombre());
-                ListaFestivos.put("Fecha", fecha);
+                ListaFestivos.put("nombre", festivo.getNombre());
+                ListaFestivos.put("fecha", fecha);
                 datos.add(ListaFestivos);
             
             }

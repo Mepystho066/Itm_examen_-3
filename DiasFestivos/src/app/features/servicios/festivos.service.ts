@@ -3,6 +3,7 @@ import { environment } from '../../../environments/environment.prod';
 import { Observable } from 'rxjs';
 import { Festivo } from '../../core/entidades/Festivo';
 import { HttpClient } from '@angular/common/http';
+import { DatosFestivo } from '../../core/entidades/datos-festivo';
 
 @Injectable({
   providedIn: 'root'

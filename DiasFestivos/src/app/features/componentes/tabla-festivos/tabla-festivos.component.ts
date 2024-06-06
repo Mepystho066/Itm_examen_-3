@@ -9,6 +9,7 @@ import { Tipo } from '../../../core/entidades/Tipo';
 import { MatDialog } from '@angular/material/dialog';
 import { FestivoEditarComponent } from '../festivo-editar/festivo-editar.component';
 import { DecidirComponent } from '../../../shared/componentes/decidir/decidir.component';
+import { DatosFestivo } from '../../../core/entidades/datos-festivo';
 @Component({
   selector: 'app-tabla-festivos',
   standalone: true,
@@ -26,20 +27,21 @@ export class TablaFestivosComponent {
   public fechasPicker:   Date | undefined ; 
   */
   public fechasPicker: string = "";
-  public festivos: Festivo [] =[];
-  //public tiposFestivo: Tipo [] = [];
   public nombreFestivo:String ="";
+  public festivos: Festivo [] =[];
+  public datosFestivo: DatosFestivo [] = [];
   
   public modoColumnas =  ColumnMode;
   public seleccionarFestivo = SelectionType;
   public festivoEscogido: Festivo | undefined; 
 
-  public columnas :any[] = [
-    {name:"Festivo", prop:"nombre"},
-    {name:"Dia", prop:"dia" },
-    {name:"Mes", prop:"mes"}
-  ]
- // esta es la columnade logica  
+  //public columnas :any[] = [
+  //  {name:"Festivo", prop:"nombre"},
+  //  {name:"Dia", prop:"dia" },
+  //  {name:"Mes", prop:"mes"}
+  //]
+ // esta es la columnade logica  '
+
   public columnasLogica:any[]=[
     {name:"Festivo", prop:"nombre"},
     {name:"Fecha", prop:"fecha" },
@@ -48,7 +50,7 @@ export class TablaFestivosComponent {
   // servicio para cuadros de dialogo : MatDialog ,  para poder cargar el cuadro de  dialog desde buscar
   constructor(private servicio: FestivosService , private servicioDialogo: MatDialog ){
     this.listar()
-
+    //this.logica()
   }
 
   escoger( event:any){
@@ -77,6 +79,7 @@ public logica(){
   this.servicio.logica(años).subscribe({
   next: response =>{
     this.festivos= response;
+    console.log(this.festivos= response)
   },
   error: error =>{
     window.alert(error.mensage)

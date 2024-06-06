@@ -40,7 +40,7 @@
 </div>
 
 <div>
-    <ngx-datatable class="dark" [rows]="festivos" [columns]="columnas" [limit] = "10" 
+    <ngx-datatable class="dark" [rows]="festivos" [columns]="columnasLogica" [limit] = "10" 
     [headerHeight] = "50" [footerHeight]="50" [rowHeight]="'auto'" [columnMode]="modoColumnas.force" [selectionType]="seleccionarFestivo.single" (activate)="escoger($event)">  
         
     </ngx-datatable>
